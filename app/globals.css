@@ -1,0 +1,449 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+  
+  /* Custom color variables */
+  --primary-color: #f76361;
+  --secondary-color: #884f83;
+  --tertiary-color: #263b58;
+  
+  /* Typography scale */
+  --font-size-xs: 0.75rem;   /* 12px */
+  --font-size-sm: 0.875rem;  /* 14px */
+  --font-size-base: 1rem;    /* 16px */
+  --font-size-lg: 1.125rem;  /* 18px */
+  --font-size-xl: 1.25rem;   /* 20px */
+  --font-size-2xl: 1.5rem;   /* 24px */
+  --font-size-3xl: 1.875rem; /* 30px */
+  --font-size-4xl: 2.25rem;  /* 36px */
+  
+  /* Font weights */
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  
+  /* Line heights */
+  --line-height-tight: 1.25;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.75;
+  
+  /* Spacing system */
+  --spacing-0: 0;
+  --spacing-px: 1px;
+  --spacing-0.5: 0.125rem;
+  --spacing-1: 0.25rem;
+  --spacing-1.5: 0.375rem;
+  --spacing-2: 0.5rem;
+  --spacing-2.5: 0.625rem;
+  --spacing-3: 0.75rem;
+  --spacing-3.5: 0.875rem;
+  --spacing-4: 1rem;
+  --spacing-5: 1.25rem;
+  --spacing-6: 1.5rem;
+  --spacing-8: 2rem;
+  --spacing-10: 2.5rem;
+  --spacing-12: 3rem;
+  --spacing-16: 4rem;
+  --spacing-20: 5rem;
+  
+  /* Transition timings */
+  --transition-quick: 150ms;
+  --transition-normal: 250ms;
+  --transition-slow: 350ms;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 3.9%;
+    --primary: 354 89% 67%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 293 28% 42%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 222 25% 36%;
+    --accent: 354 89% 95%;
+    --accent-foreground: 354 89% 30%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 354 89% 67%;
+    --chart-1: 221.2 83.2% 53.3%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+    --radius: 0.5rem;
+  }
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 354 89% 67%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 293 28% 42%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 354 89% 25%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 354 89% 67%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+  }
+}
+
+/* Typography utility classes */
+.text-xs {
+  font-size: var(--font-size-xs);
+}
+
+.text-sm {
+  font-size: var(--font-size-sm);
+}
+
+.text-base {
+  font-size: var(--font-size-base);
+}
+
+.text-lg {
+  font-size: var(--font-size-lg);
+}
+
+.text-xl {
+  font-size: var(--font-size-xl);
+}
+
+.text-2xl {
+  font-size: var(--font-size-2xl);
+}
+
+.text-3xl {
+  font-size: var(--font-size-3xl);
+}
+
+.text-4xl {
+  font-size: var(--font-size-4xl);
+}
+
+.font-light {
+  font-weight: var(--font-weight-light);
+}
+
+.font-normal {
+  font-weight: var(--font-weight-normal);
+}
+
+.font-medium {
+  font-weight: var(--font-weight-medium);
+}
+
+.font-semibold {
+  font-weight: var(--font-weight-semibold);
+}
+
+.font-bold {
+  font-weight: var(--font-weight-bold);
+}
+
+.leading-tight {
+  line-height: var(--line-height-tight);
+}
+
+.leading-normal {
+  line-height: var(--line-height-normal);
+}
+
+.leading-relaxed {
+  line-height: var(--line-height-relaxed);
+}
+
+/* Fix for the CSS syntax error with the * selector */
+.border-border {
+  border-color: hsl(var(--border));
+}
+
+.bg-background {
+  background-color: hsl(var(--background));
+}
+
+.text-foreground {
+  color: hsl(var(--foreground));
+}
+
+/* Animation delay utility */
+.animation-delay-200 {
+  animation-delay: 200ms;
+}
+
+.animation-delay-400 {
+  animation-delay: 400ms;
+}
+
+/* Custom color utility classes */
+.bg-primary-custom {
+  background-color: var(--primary-color);
+}
+
+.bg-secondary-custom {
+  background-color: var(--secondary-color);
+}
+
+.bg-tertiary-custom {
+  background-color: var(--tertiary-color);
+}
+
+.text-primary-custom {
+  color: var(--primary-color);
+}
+
+.text-secondary-custom {
+  color: var(--secondary-color);
+}
+
+.text-tertiary-custom {
+  color: var(--tertiary-color);
+}
+
+.border-primary-custom {
+  border-color: var(--primary-color);
+}
+
+.border-secondary-custom {
+  border-color: var(--secondary-color);
+}
+
+.border-tertiary-custom {
+  border-color: var(--tertiary-color);
+}
+
+.bg-gradient-custom {
+  background-image: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+}
+
+.bg-gradient-subtle {
+  background-image: linear-gradient(to right, hsl(var(--primary)/90%), hsl(var(--secondary)/90%));
+}
+
+.text-gradient-custom {
+  background-image: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+  background-clip: text;
+  color: transparent;
+}
+
+.hover\:bg-primary-custom:hover {
+  background-color: var(--primary-color);
+}
+
+.hover\:bg-secondary-custom:hover {
+  background-color: var(--secondary-color);
+}
+
+.hover\:bg-tertiary-custom:hover {
+  background-color: var(--tertiary-color);
+}
+
+.hover\:text-primary-custom:hover {
+  color: var(--primary-color);
+}
+
+.hover\:text-secondary-custom:hover {
+  color: var(--secondary-color);
+}
+
+.hover\:text-tertiary-custom:hover {
+  color: var(--tertiary-color);
+}
+
+.ring-primary-custom {
+  --tw-ring-color: var(--primary-color);
+}
+
+.ring-secondary-custom {
+  --tw-ring-color: var(--secondary-color);
+}
+
+.ring-tertiary-custom {
+  --tw-ring-color: var(--tertiary-color);
+}
+
+/* Skeleton wave animation */
+@keyframes skeletonWave {
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: calc(200px \+ 100%) 0;
+  }
+}
+
+.skeleton-wave {
+  background: linear-gradient(90deg, 
+    rgba(0, 0, 0, 0.06) 25%, 
+    rgba(0, 0, 0, 0.1) 37%, 
+    rgba(0, 0, 0, 0.06) 63%
+  );
+  background-size: 200px 100%;
+  animation: skeletonWave 1.5s ease infinite;
+}
+
+.dark .skeleton-wave {
+  background: linear-gradient(90deg, 
+    rgba(255, 255, 255, 0.06) 25%, 
+    rgba(255, 255, 255, 0.1) 37%, 
+    rgba(255, 255, 255, 0.06) 63%
+  );
+  background-size: 200px 100%;
+  animation: skeletonWave 1.5s ease infinite;
+}
+
+/* Typing indicator animation */
+.typing-indicator {
+  display: flex;
+  align-items: center;
+  height: 1.5rem;
+}
+
+.typing-indicator span {
+  height: 8px;
+  width: 8px;
+  margin: 0 1px;
+  background-color: #606060;
+  border-radius: 50%;
+  display: inline-block;
+  opacity: 0.4;
+}
+
+.dark .typing-indicator span {
+  background-color: #A0A0A0;
+}
+
+.typing-indicator span:nth-child(1) {
+  animation: typing 1.5s infinite ease-in-out;
+}
+
+.typing-indicator span:nth-child(2) {
+  animation: typing 1.5s infinite ease-in-out 0.2s;
+}
+
+.typing-indicator span:nth-child(3) {
+  animation: typing 1.5s infinite ease-in-out 0.4s;
+}
+
+@keyframes typing {
+  0% {
+    transform: translateY(0);
+    opacity: 0.4;
+  }
+  50% {
+    transform: translateY(-10px);
+    opacity: 0.9;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 0.4;
+  }
+}
+
+/* Loading dots animation for send button */
+.loading-dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  height: 20px;
+}
+
+.loading-dots span {
+  width: 4px;
+  height: 4px;
+  background-color: white;
+  border-radius: 50%;
+  display: inline-block;
+  animation: loadingDots 1.4s infinite ease-in-out both;
+}
+
+.loading-dots span:nth-child(1) {
+  animation-delay: -0.32s;
+}
+
+.loading-dots span:nth-child(2) {
+  animation-delay: -0.16s;
+}
+
+@keyframes loadingDots {
+  0%, 80%, 100% {
+    transform: scale(0);
+  }
+  40% {
+    transform: scale(1);
+  }
+}
+
+/* Message reactions and hover animations */
+.message-action-btn {
+  @apply p-1 rounded-full transition-colors;
+}
+
+.message-action-btn:hover {
+  @apply bg-gray-100 dark:bg-gray-800;
+}
+
+.message-action-btn.active {
+  @apply text-blue-500;
+}
+
+.message-action-btn.active-like {
+  @apply text-red-500;
+}
+
+.message-action-btn.active-save {
+  @apply text-yellow-500;
+}
+
+.message-hover-container:hover .message-hover-reveal {
+  @apply opacity-100;
+}
+
+.message-hover-reveal {
+  @apply opacity-0 transition-opacity duration-200;
+}
+
+.thread-reply-button {
+  @apply text-xs text-blue-500 hover:text-blue-600 dark:text-blue-400 dark:hover:text-blue-300;
+}
+
+/* Thread message styling */
+.thread-message {
+  @apply border-l-2 border-gray-200 dark:border-gray-700 pl-4 ml-8;
+}

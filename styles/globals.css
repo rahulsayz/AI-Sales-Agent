@@ -1,0 +1,21 @@
+/* Fix potential CSS syntax errors */
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+/* Use proper CSS comment syntax */
+/* This ensures comments are properly parsed */
+
+/* Fix potential malformed CSS rule with unexpected * */
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Fix star operator if it exists */
+[class*="example"] {
+  /* Use proper syntax for star operator */
+  display: block;
+} 

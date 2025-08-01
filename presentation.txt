@@ -1,0 +1,17 @@
+To make the presentation generation work, you would need to:
+Integrate with API:
+    Use the generatePresentationSection function from api.ts to generate real content
+    Implement proper error handling for generation failures
+    Add loading states during generation
+Data Processing:
+    Process the selected documents and use them as context for generation
+    Implement proper section generation based on the meeting type
+    Handle the system prompt properly
+Content Management:
+    Implement proper content storage and retrieval
+    Add real regeneration functionality
+    Handle media and formatting properly
+Review Process:
+    Replace mock slides with actual generated content
+    Implement real slide regeneration
+    Add proper content editing and saving

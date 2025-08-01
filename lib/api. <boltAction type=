@@ -1,0 +1,197 @@
+import { ChatMode, Chat } from './types';
+
+// API base URL - in a real app, this would come from environment variables
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8001';
+
+// Mock API responses for demo purposes
+const mockResponses = {
+  chat: [
+    "I understand your question about sales strategies. Based on my analysis, the most effective approach would be to focus on customer needs first, then tailor your solution accordingly. Research shows that solution-based selling increases conversion rates by 35%.",
+    "Looking at your sales pipeline, I'd recommend prioritizing leads that have shown engagement in the last 30 days. Studies indicate that following up within 24 hours of engagement can increase conversion by 42%.",
+    "For your upcoming client meeting, I suggest focusing on the ROI metrics from similar implementations. Quantifying value early in the conversation tends to shorten sales cycles by approximately 28%.",
+    "Based on the information provided, I recommend segmenting your customer base by industry vertical and tailoring your messaging accordingly. This approach has shown a 37% improvement in response rates for similar sales teams."
+  ],
+  rag: [
+    "According to the document 'Sales Strategy 2025', the recommended approach for enterprise clients is a consultative selling model with emphasis on long-term value creation. The document specifically mentions on page 12: 'Enterprise sales require minimum 5 touchpoints across different stakeholders'.\n\n**Sources:**\nSource 1: Sales Strategy 2025 (p.12-14)\nSource 2: Enterprise Client Handbook (Section 3.2)",
+    "Based on the 'Q2 Sales Performance Report', your team is currently tracking at 78% of target, with strongest performance in the healthcare vertical. The report highlights: 'Opportunity for growth in financial services sector with targeted solution selling'.\n\n**Sources:**\nSource 1: Q2 Sales Performance Report (p.5)\nSource 2: Vertical Market Analysis (Table 4)",
+    "The 'Customer Feedback Analysis' document indicates that clients value responsiveness and industry knowledge most highly, with 87% citing these as critical factors in vendor selection. The document states: 'Technical expertise without industry context was cited as a common reason for disqualification'.\n\n**Sources:**\nSource 1: Customer Feedback Analysis (2024)\nSource 2: Competitive Positioning Guide"
+  ],
+  summarize: [
+    "# Executive Summary: Q1 Sales Performance\n\n## Key Metrics\n- Total Revenue: $4.2M (18% above target)\n- New Customers: 37 (12% above target)\n- Average Deal Size: $113,500 (7% increase YoY)\n- Sales Cycle Length: 42 days (5 days shorter than Q4)\n\n## Top Performing Segments\n1. Healthcare vertical showed strongest growth (32% YoY)\n2. Enterprise segment exceeded targets by 24%\n3. Cloud migration solutions had highest attach rate (68%)\n\n## Areas for Improvement\n- SMB segment performance below target by 8%\n- Southeast region trailing other territories by 15%\n- Renewal rates for legacy products at 78% (target: 85%)\n\n## Recommendations\n1. Increase sales enablement resources for SMB team\n2. Review pricing strategy for legacy product line\n3. Implement targeted marketing campaign in Southeast region\n4. Expand successful healthcare vertical playbook to financial services",
+    "# Summary: Cloud Migration SOW Analysis\n\n## Project Overview\n- Client: First American Financial (FAF)\n- Project: Cloud Migration and Data Modernization\n- Timeline: January 6, 2024 - June 30, 2026\n- Contract Value: Fixed fee structure with milestone-based payments\n\n## Key Deliverables\n1. Cloud infrastructure assessment and planning\n2. Data platform architecture design\n3. Migration of legacy systems to cloud environment\n4. Implementation of modern data warehousing solution\n5. Knowledge transfer and documentation\n\n## Commercial Terms\n- Fixed fee payment structure\n- Milestone-based invoicing\n- 30-day termination clause\n- Change control process defined in Attachment B\n\n## Key Personnel Requirements\n- Vendor to provide dedicated project manager\n- Technical architect with cloud certification required\n- Data migration specialists to be assigned full-time\n\n## Risk Factors\n- Tight timeline for legacy system migration\n- Dependency on client's internal IT resources\n- Potential scope changes as assessment progresses"
+  ],
+  search: [
+    "# Search Results\n\nHere are the most relevant results for your search:\n\n## Result 1: 12-30 Onyx_FAF_Cloud_Modernization_SOW_1.1\n**Relevance Score:** 76.2%\n\n**Context before:**\nFixed Fee: Vendor may invoice First American following acceptance by First American of each separately  priced deliverable.  \n\n\n\n\n\n**Matching text:**\n7. \n\n**Context after:**\nAuthorized Representatives and Key Personnel. \n\n\n\n**Document ID:** 4cc6e1ee-3156-4784-9a8a-bb2ecb98c850\n\n---\n\n## Result 2: 12-30 Onyx_FAF_Cloud_Modernization_SOW_1.1\n**Relevance Score:** 76.1%\n\n**Context before:**\nOnce executed by the Parties, the Change Order will be deemed to amend and become part of the  SOW.  \n\n\n\n**Matching text:**\n6. \n\n**Context after:**\nPricing, Payment, and Invoicing. \n\n\n\n**Document ID:** 4cc6e1ee-3156-4784-9a8a-bb2ecb98c850\n\n---\n\n## Result 3: 12-30 Onyx_FAF_Cloud_Modernization_SOW_1.1\n**Relevance Score:** 75.9%\n\n**Context before:**\nThe deliverables as described in and according to the schedule set forth in: \n\nAttachment A-1 (Deliverables and Pricing); and  \n\nAttachment A-2 (Scope of Work) \n\nThe Attachments are hereby incorporated into this SOW.\n\n\n\n**Matching text:**\n5. \n\n**Context after:**\nChange Control Process. \n\n\n\n**Document ID:** 4cc6e1ee-3156-4784-9a8a-bb2ecb98c850\n\n---"
+  ]
+};
+
+export async function sendMessage(message: string, mode: ChatMode, chatId?: string): Promise<string> {
+  // For demo purposes, we'll use mock responses instead of actual API calls
+  try {
+    // Simulate API delay
+    await new Promise(resolve => setTimeout(resolve, 1500));
+    
+    // Get a random response based on the mode
+    const responses = mockResponses[mode] || mockResponses.chat;
+    const randomIndex = Math.floor(Math.random() * responses.length);
+    return responses[randomIndex];
+  } catch (error) {
+    console.error(`Error in ${mode} mode:`, error);
+    return `I apologize, but I encountered an error while processing your request. Please try again later.`;
+  }
+}
+
+// Function to list available documents for RAG search
+export async function listDocuments(
+  page: number = 1, 
+  limit: number = 50, 
+  sort: 'created_at' | 'doc_id' = 'created_at', 
+  order: 'asc' | 'desc' = 'desc'
+): Promise<any[]> {
+  // Simulate API delay
+  await new Promise(resolve => setTimeout(resolve, 800));
+  
+  // Return mock documents
+  return [
+    {
+      id: '4cc6e1ee-3156-4784-9a8a-bb2ecb98c850',
+      name: 'Cloud Modernization SOW',
+      metadata: {
+        created_at: '2024-12-30T10:15:30Z',
+        type: 'application/docx',
+        size: 245000,
+        author: 'John Smith',
+        department: 'Sales',
+        category: 'Contract'
+      }
+    },
+    {
+      id: 'a7c22e45-9b13-4d87-b142-3f98e625c7a9',
+      name: 'Q1 2025 Sales Strategy',
+      metadata: {
+        created_at: '2024-12-15T14:22:10Z',
+        type: 'application/pdf',
+        size: 1250000,
+        author: 'Sarah Johnson',
+        department: 'Sales',
+        category: 'Strategy'
+      }
+    },
+    {
+      id: '6b9d4f12-e8a7-4c56-9d23-8f7e3a91b0c5',
+      name: 'Customer Feedback Analysis',
+      metadata: {
+        created_at: '2024-11-28T09:45:22Z',
+        type: 'application/pdf',
+        size: 875000,
+        author: 'Michael Chen',
+        department: 'Customer Success',
+        category: 'Research'
+      }
+    },
+    {
+      id: '2e5f8a31-c6b9-4d78-a3e5-7f9c1d2b3a4e',
+      name: 'Competitive Analysis Report',
+      metadata: {
+        created_at: '2024-11-10T16:30:45Z',
+        type: 'application/pdf',
+        size: 1050000,
+        author: 'Emily Rodriguez',
+        department: 'Marketing',
+        category: 'Research'
+      }
+    },
+    {
+      id: '9d4e7c2b-1a3f-5e8d-9c7b-6a5f4e3d2c1b',
+      name: 'Product Roadmap 2025',
+      metadata: {
+        created_at: '2024-12-05T11:20:15Z',
+        type: 'application/pptx',
+        size: 3250000,
+        author: 'David Wilson',
+        department: 'Product',
+        category: 'Strategy'
+      }
+    }
+  ];
+}
+
+export async function exportChat(chatId: string, format: 'pdf' | 'txt' | 'json'): Promise<Blob> {
+  // Get the chat from the store
+  const { chats } = window.store?.getState() || { chats: [] };
+  const chat = chats.find((c: Chat) => c.id === chatId);
+  
+  if (!chat) {
+    throw new Error('Chat not found');
+  }
+  
+  // Simulate API delay
+  await new Promise(resolve => setTimeout(resolve, 1000));
+  
+  // Create different formats
+  if (format === 'json') {
+    const jsonData = JSON.stringify(chat, null, 2);
+    return new Blob([jsonData], { type: 'application/json' });
+  } else if (format === 'txt') {
+    let textContent = `Chat: ${chat.title}\nDate: ${chat.createdAt.toLocaleString()}\n\n`;
+    
+    chat.messages.forEach(msg => {
+      const role = msg.role === 'user' ? 'You' : 'Onix AI';
+      textContent += `${role} (${new Date(msg.timestamp).toLocaleTimeString()}):\n${msg.content}\n\n`;
+    });
+    
+    return new Blob([textContent], { type: 'text/plain' });
+  } else {
+    // For PDF, we'll just return a text blob with a message
+    // In a real app, you'd generate an actual PDF
+    const pdfPlaceholder = `This would be a PDF of chat "${chat.title}" with ${chat.messages.length} messages.`;
+    return new Blob([pdfPlaceholder], { type: 'application/pdf' });
+  }
+}
+
+export async function searchMessages(query: string, filters?: {
+  dateFrom?: Date;
+  dateTo?: Date;
+  mode?: ChatMode;
+}): Promise<any[]> {
+  // Get all chats from the store
+  const { chats } = window.store?.getState() || { chats: [] };
+  
+  // Simulate API delay
+  await new Promise(resolve => setTimeout(resolve, 800));
+  
+  // Search through all messages
+  const results: any[] = [];
+  
+  chats.forEach(chat => {
+    // Apply mode filter if specified
+    if (filters?.mode && chat.mode !== filters.mode) {
+      return;
+    }
+    
+    chat.messages.forEach(msg => {
+      // Apply date filters if specified
+      if (filters?.dateFrom && new Date(msg.timestamp) < filters.dateFrom) {
+        return;
+      }
+      if (filters?.dateTo && new Date(msg.timestamp) > filters.dateTo) {
+        return;
+      }
+      
+      // Search in message content
+      if (msg.content.toLowerCase().includes(query.toLowerCase())) {
+        results.push({
+          id: msg.id,
+          chatId: chat.id,
+          content: msg.content.length > 100 
+            ? msg.content.substring(0, 100) + '...' 
+            : msg.content,
+          timestamp: msg.timestamp,
+          role: msg.role
+        });
+      }
+    });
+  });
+  
+  return results;
+}
