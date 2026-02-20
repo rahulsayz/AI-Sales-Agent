@@ -1,4 +1,4 @@
-# Onix AI Sales Agent
+# AI Sales Agent
 
 A modern web-based UI for sales-focused AI assistance with user authentication and chat history persistence.
 
